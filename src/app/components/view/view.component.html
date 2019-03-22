@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <h3>User table with integrated sorting features</h3>
+    <table>
+        <thead>
+          <tr>
+            <th>
+              <span>
+                  ID
+              </span>
+              <form>
+                <select #stateID (change)="chengePipeType(stateID.value, 'id')">
+                  <option *ngFor="let option of optionValuesNumberColumn" [value]="option.value">{{option.viewValue}}</option>
+                </select>
+              </form>
+            </th>
+            <th>
+              <span>
+                Name
+              </span>
+              <form>
+                <select #stateName (change)="chengePipeType(stateName.value, 'name')">
+                    <option *ngFor="let option of optionValuesStringColumn" [value]="option.value">{{option.viewValue}}</option>
+                </select>
+              </form>
+            </th>
+            <th>
+              <span>
+                Nick name
+              </span>
+              <select #stateNick (change)="chengePipeType(stateNick.value, 'username')">
+                  <option *ngFor="let option of optionValuesStringColumn" [value]="option.value">{{option.viewValue}}</option>
+              </select>
+            </th>
+            <th>
+              <span>
+              City 
+              </span>
+              <select #stateCity (change)="chengePipeType(stateCity.value, 'city')">
+                  <option *ngFor="let option of optionValuesStringColumn" [value]="option.value">{{option.viewValue}}</option>
+              </select>
+            </th>
+            <th>
+              <span>
+                Email
+              </span>
+              <select #stateMail (change)="chengePipeType(stateMail.value, 'email')">
+                  <option *ngFor="let option of optionValuesStringColumn" [value]="option.value">{{option.viewValue}}</option>
+              </select>
+            </th>
+          </tr>
+        </thead>
+      <tbody>
+        <tr *ngFor = "let user of (users | sortByNumber: pipeStates.order : pipeStates.colName)">
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.address.city}}</td>
+          <td>{{user.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-3">
+    <h3>Example of displaying information about the time of the received message</h3>
+    <ul>
+      <li>Час завантаження сторінки: {{messagesTime.thisMoment}}</li>
+      <li>{{messagesTime.justNow | timePipe}}</li>
+      <li>{{messagesTime.halfAnHour | timePipe}}</li>
+      <li>{{messagesTime.fiveHour | timePipe}}</li>
+      <li>{{messagesTime.moreOneDay | timePipe}}</li>
+    </ul>
+  </div>
+</div>
