@@ -4,7 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'timePipe'
 })
 export class TimePipePipe implements PipeTransform {
-
+  /**
+   * transform - date handler
+   * @param value - date
+   * @param args - optional arguments
+   */
   transform(value: Date, args?: any): any {
     const timeComparison: number = Date.now() - value.getTime();
     const dayOption = {day: '2-digit', month: '2-digit', year: 'numeric'};

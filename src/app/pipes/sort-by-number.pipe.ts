@@ -5,7 +5,12 @@ import { User } from '../interfaces/singleUser';
   name: 'sortByNumber'
 })
 export class SortByNumberPipe implements PipeTransform {
-
+  /**
+   * data sorting function for user table
+   * @param values - array of user data
+   * @param order - direction of sorting
+   * @param colName - column name for sorting
+   */
   transform(values: User[], order: string, colName: string): User[] {
     if (colName === 'id') {
       console.log('Sort by numbers');
